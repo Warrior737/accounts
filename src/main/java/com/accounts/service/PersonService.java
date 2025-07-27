@@ -11,7 +11,6 @@ public interface PersonService {
     List<Person> getAllPerson();
     void savePerson(Person person);
     Person getPersonById(long id);
-
     void deletePersonById(long id);
 
     Page<Person> findAllPerson(Pageable pageable);

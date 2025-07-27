@@ -14,7 +14,7 @@ public class Person {
 
     @Id
     @JsonProperty
-    private Integer personId;
+    private Long personId;
     @JsonProperty
     private String firstName;
     @JsonProperty

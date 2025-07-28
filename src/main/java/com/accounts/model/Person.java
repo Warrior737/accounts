@@ -27,6 +27,8 @@ public class Person {
     private String address;
     @JsonProperty
     private Date dateOfBirth;
+    @JsonProperty
+    private String countryCode;
 
 
 }

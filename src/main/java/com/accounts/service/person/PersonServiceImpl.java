@@ -1,12 +1,10 @@
-package com.accounts.service;
+package com.accounts.service.person;
 
 import com.accounts.model.Person;
 import com.accounts.repo.PersonRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -25,25 +23,24 @@ public class PersonServiceImpl implements PersonService {
     }
 
     @Override
-    public void savePerson(Person person) {
-        this.service.save(person);
+    public Person savePerson(Person person) {
+        return this.service.save(person);
     }
 
     @Override
-    public Person getPersonById(long id) {
-        Optional<Person> optionalPerson = service.findById(id);
-        Person person = null;
-        if (optionalPerson.isPresent()) {
-            person = optionalPerson.get();
+    public Optional<Person> getPersonById(long id) {
+        return service.findById(id);
+    }
+
+    @Override
+    public boolean deletePersonById(long id) {
+        Optional<Person> person = service.findById(id);
+        if (person.isPresent()){
+            service.deleteById(id);
+            return true;
         } else {
-            return new Person();
+            return false;
         }
-        return person;
-    }
-
-    @Override
-    public void deletePersonById(long id) {
-        this.service.deleteById(id);
     }
 
     @Override

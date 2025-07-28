@@ -1,17 +1,18 @@
-package com.accounts.service;
+package com.accounts.service.person;
 
 import com.accounts.model.Person;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface PersonService {
 
     List<Person> getAllPerson();
-    void savePerson(Person person);
-    Person getPersonById(long id);
-    void deletePersonById(long id);
+    Person savePerson(Person person);
+    Optional<Person> getPersonById(long id);
+    boolean deletePersonById(long id);
 
     Page<Person> findAllPerson(Pageable pageable);
 }
